@@ -10,6 +10,7 @@ package proyecto;
  * @author Diana Chica Z
  */
 public class Vip {
-    System.out.println("Hola");
+    public String precio;
+    
     
 }
