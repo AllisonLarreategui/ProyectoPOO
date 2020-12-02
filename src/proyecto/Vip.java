@@ -11,6 +11,7 @@ package proyecto;
  */
 public class Vip {
     public String precio;
+    private int algo;
     
     
 }
