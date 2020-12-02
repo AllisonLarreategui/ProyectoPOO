@@ -10,5 +10,6 @@ package proyecto;
  * @author allison
  */
 public class Cliente {
-     int edad;   
+     int edad; 
+     String nombre;
 }
