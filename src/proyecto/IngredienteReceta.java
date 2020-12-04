@@ -10,5 +10,6 @@ package proyecto;
  * @author User
  */
 public class IngredienteReceta {
-    
+    public Ingrediente ingrediente;
+    public int cantidad;   
 }
