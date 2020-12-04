@@ -10,5 +10,8 @@ package proyecto;
  * @author User
  */
 public class Receta {
+    private String nombre;
+    private String clasificacion;
+    private ArrayList<IngredienteReceta> productos = new ArrayList<>();
     
 }
