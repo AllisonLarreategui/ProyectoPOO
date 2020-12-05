@@ -61,6 +61,8 @@ public class ProyectoPOO {
 
 
 
-        
-    
+     
+
+//System.out.println(Ingrediente.leerData("src/proyecto/Ingredientes.csv"));
+}
 }
