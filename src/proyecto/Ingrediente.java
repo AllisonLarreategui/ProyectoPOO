@@ -47,10 +47,12 @@ public class Ingrediente {
                 int p= Integer.parseInt(ing[3]);
                 int g= Integer.parseInt(ing[4]);
                 int f= Integer.parseInt(ing[5]);
+                //se agregan a la lista ingredientes de tipo ingrediente
                ingredientes.add(new Ingrediente(n,c,h,p,g,f)); 
             }
             r.close();
         }
+        // las excepciones necesarias para que no se caiga al leer
         catch (FileNotFoundException ex){
             System.out.println("Error en la lectura");
         }
