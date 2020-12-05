@@ -31,7 +31,7 @@ public class ProyectoPOO {
       System.out.println("4.-Creacion automatica del menu semanal");  
       System.out.println("5.-Envió de Menú Semanal a Clientes por correo electrónico");
       System.out.println("6.-Consultar Suscripciones");
-      System.out.println("6.-Salir");
+      System.out.println("7.-Salir");
       
       System.out.print("Opcion:");
       opcion = sc.nextLine();
@@ -61,6 +61,8 @@ public class ProyectoPOO {
 
 
 
-        
-    
+     
+
+//System.out.println(Ingrediente.leerData("src/proyecto/Ingredientes.csv"));
+}
 }
