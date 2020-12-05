@@ -15,20 +15,21 @@ public class Vip extends Cliente{
     private int horasEjerSema;
     private  String profesion;
         
-    public Vip(String cedula, String nombre, String apellido, String telefono, String correo, String direccion, float precioMensual,double peso, double estatura, int horasEjerSema,String profesion){
-        super(cedula,nombre, apellido, telefono, correo, direccion, precioMensual);
+    public Vip(String cedula, String nombre, String apellido, String telefono, String correo, String direccion, double peso, double estatura, int horasEjerSema,String profesion){
+        super(cedula,nombre, apellido, telefono, correo, direccion);
         this.peso = peso;
         this.estatura = estatura;
         this.horasEjerSema = horasEjerSema;
         this.profesion = profesion;
     }
 
+    
     @Override
-    public  double valorSuscripcion(){
-        return 120;    
+    public void valorSuscripcion(){
+        System.out.println("Su suscripcion mensual es de:  120");
     }
     
-    public static double calcularIMC(double estatura, double peso){
+    public double calcularIMC(double estatura, double peso){
         double IMC = (estatura/(peso*peso));
         return IMC;
     }

@@ -6,23 +6,35 @@
 
 package proyecto;
 import java.util.Scanner;
-public abstract class Fresh extends Cliente{
+
+public class Fresh extends Cliente{
     public static Scanner sc = new Scanner(System.in);
-    public Fresh(String cedula, String nombre, String apellido, String telefono, String correo, String direccion, float precioMensual) {
-       super(cedula, nombre, apellido, telefono, correo, direccion, precioMensual);
+    
+    public Fresh(String cedula, String nombre, String apellido, String telefono, String correo, String direccion ) {
+       super(cedula, nombre, apellido, telefono, correo, direccion);
     }
  
-    public int opcionEntrega(){
-        System.out.print("Accede al envio de su comida?:");
+    public static int opcionEntrega(){
+        System.out.print("Desea entrega a domicilio(Si/No):");
         String entrega= sc.nextLine();
-        sc.nextLine();
+        
         if (entrega.equals("Si")){
             return 30;
         }
         else
             return 0;
     }
+    
+    /**
+     *
+     */
+    @Override
+    //falta completar
+    
     public void valorSuscripcion(){
-        System.out.print("Su valor total de Suscripción es: " + (70 + opcionEntrega()));  
+      
+      double suscripcion = 70 + (double)opcionEntrega();
+      System.out.println("Su suscripcion mensual es de :"+suscripcion);
+        
     }
 }

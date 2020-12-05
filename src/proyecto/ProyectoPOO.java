@@ -16,7 +16,12 @@ public class ProyectoPOO {
     public static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
         
-
+      Vip cliente1 = new Vip("sgfdg","dggtre", "ewefregf", "wgrwg", "grgrg", "wefefgew",50,160,4,"Profesor");
+      cliente1.valorSuscripcion();
+      
+      Fresh cliente2 = new Fresh("sgf", "asfdsf", "asdvfd", "sadfdsf", "sdvfsf","asdfdsf");
+      cliente2.valorSuscripcion();
+      
       menu();
 
     }
@@ -24,7 +29,7 @@ public class ProyectoPOO {
       String opcion="";  
       while(!opcion.equals("7")){
           
-      System.out.println("Banco 2020");
+      System.out.println("***********NutriFit***********\n");
       System.out.println("1.-Subida de Productos");
       System.out.println("2.-Registro de Recetas");
       System.out.println("3.-Registro de clientes");
@@ -58,11 +63,11 @@ public class ProyectoPOO {
       }
     }
 
-
+    
 
 
      
 
 //System.out.println(Ingrediente.leerData("src/proyecto/Ingredientes.csv"));
 }
-}
+
