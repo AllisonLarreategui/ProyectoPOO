@@ -20,5 +20,5 @@ public abstract class Cliente {
         this.precioMensual = precioMensual;
     }
     
-    public abstract double calcularSuscripcion(int dias);
+    public abstract double valorSuscripcion();
 }

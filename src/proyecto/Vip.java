@@ -24,9 +24,13 @@ public class Vip extends Cliente{
     }
 
     @Override
-    public double calcularSuscripcion(int dias){
-        return 0;
+    public  double valorSuscripcion(){
+        return 120;    
     }
     
+    public static double calcularIMC(double estatura, double peso){
+        double IMC = (estatura/(peso*peso));
+        return IMC;
+    }
     
 }
