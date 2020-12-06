@@ -16,10 +16,19 @@ public class ProyectoPOO {
     public static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
         
+      //Objetos necesarios para el programa
+      
+      Receta bolon = new Receta("Bolon de verde","Desayuno");
+      Receta sopaVerduras= new Receta("Sopa de Verduras", "Almuerzo");
+      Receta asadoPollo = new Receta("Asado de pollo", "Merienda");
+    
+    
       Vip cliente1 = new Vip("sgfdg","dggtre", "ewefregf", "wgrwg", "grgrg", "wefefgew",50,160,4,"Profesor");
-      cliente1.valorSuscripcion();
+      
       
       Fresh cliente2 = new Fresh("sgf", "asfdsf", "asdvfd", "sadfdsf", "sdvfsf","asdfdsf");
+      
+      cliente1.valorSuscripcion();
       cliente2.valorSuscripcion();
       
       menu();

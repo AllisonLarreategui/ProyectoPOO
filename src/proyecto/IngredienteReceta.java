@@ -11,5 +11,24 @@ package proyecto;
  */
 public class IngredienteReceta {
     public Ingrediente ingrediente;
-    public int cantidad;   
+    public int cantidad;  
+    public Receta receta;
+
+    public IngredienteReceta(Ingrediente ingrediente, int cantidad, Receta receta) {
+        this.ingrediente = ingrediente;
+        this.cantidad = cantidad;
+        this.receta = receta;
+    }
+    
+    
+    public boolean ingredientesNecesarios(Receta receta){
+        for(IngredienteReceta i:Receta.productos){
+            int contador=0;
+            if(ingrediente.equals(i){
+                contador +=1;
+            }   
+        }
+        
+        return false;
+    }
 }
