@@ -5,6 +5,8 @@
  */
 package proyecto;
 
+
+
 /**
  *
  * @author User
@@ -21,14 +23,5 @@ public class IngredienteReceta {
     }
     
     
-    public boolean ingredientesNecesarios(Receta receta){
-        for(IngredienteReceta i:Receta.productos){
-            int contador=0;
-            if(ingrediente.equals(i){
-                contador +=1;
-            }   
-        }
-        
-        return false;
-    }
+    
 }

@@ -21,14 +21,13 @@ public class ProyectoPOO {
       Receta bolon = new Receta("Bolon de verde","Desayuno");
       Receta sopaVerduras= new Receta("Sopa de Verduras", "Almuerzo");
       Receta asadoPollo = new Receta("Asado de pollo", "Merienda");
-    
-    
-      Vip cliente1 = new Vip("sgfdg","dggtre", "ewefregf", "wgrwg", "grgrg", "wefefgew",50,160,4,"Profesor");
-      
-      
       Fresh cliente2 = new Fresh("sgf", "asfdsf", "asdvfd", "sadfdsf", "sdvfsf","asdfdsf");
       
-      cliente1.valorSuscripcion();
+      bolon.ingresarProductos();
+      System.out.println(bolon.productos);
+      System.out.println(asadoPollo.productos);
+      
+      System.out.println(bolon.ingredientesNecesarios());
       cliente2.valorSuscripcion();
       
       menu();
