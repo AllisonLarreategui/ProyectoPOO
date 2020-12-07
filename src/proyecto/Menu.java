@@ -3,9 +3,12 @@ package proyecto;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Scanner;
 
 public class Menu {
     static ArrayList<Receta> menu= new ArrayList<>();
+    public static Scanner entrada= new Scanner(System.in);
+    
     
     public static ArrayList<Receta> generadorMenu(){
         
@@ -38,6 +41,7 @@ public class Menu {
         
         
     }
+   
     
     public static void enviarCorreos(ArrayList<Receta> m){
         for(Receta i:m){
@@ -45,5 +49,14 @@ public class Menu {
             Vip.Buzon2.add(i);
         }
     }
-    
+     
+    public static int calculoSemana(){
+        System.out.println("Considerando que al dia lunes como inicio de semana Ingrese la fecha de suscripcion para el menu");
+        int x= entrada.nextInt();
+        
+        int ultimoDia= x+5;
+        
+        return ultimoDia;
+  
+    }
 }

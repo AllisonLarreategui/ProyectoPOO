@@ -5,7 +5,7 @@
  */
 package proyecto;
 
-import java.awt.AWTEventMulticaster;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,9 +19,11 @@ public class ProyectoPOO {
        
     public static void menu(){
       String opcion="";  
+     
       while(!opcion.equals("7")){
           
       System.out.println("***********NutriFit***********\n");
+      
       System.out.println("1.-Subida de Productos");
       System.out.println("2.-Registro de Recetas");
       System.out.println("3.-Registro de clientes");
@@ -49,15 +51,19 @@ public class ProyectoPOO {
             
           break;
         case "5":
+            int d = Menu.calculoSemana();
+            System.out.println("El menu se generara hasta el dia viernes " + d );
             ArrayList x=Menu.generadorMenu();
             Menu.enviarCorreos(x);
             //Imprimo para ver que si se guardo en la lista de emails de Fresh
             System.out.println(Fresh.Buzon1);
           break;
         case "6":
-          
+          System.out.print("Ingrese la fecha del dia de hoy: ");
+          int j=sc.nextInt();
+          Nutrifit.consultarSuscripciones(j);
           break;
-      }
+        }
       }
     }
     
@@ -105,7 +111,8 @@ public class ProyectoPOO {
     Nutrifit.recetario.add(receta16);
     Nutrifit.recetario.add(receta17);
     Nutrifit.recetario.add(receta18);
-   
+    
+    
       menu();
 
     }

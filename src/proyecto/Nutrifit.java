@@ -6,14 +6,16 @@ import java.util.Scanner;
 
 public class Nutrifit {
     static ArrayList<Cliente> suscripciones = new ArrayList<>();
+    static ArrayList<String> suscripcionesActivas =new ArrayList<>(); 
     static ArrayList<Receta> recetario= new ArrayList<>();
     public static Scanner entrada= new Scanner(System.in);
     
     
     public static void RegistroClientes(){
-        System.out.println("A continuacion se procedara a registrar a los clientes, ingrese el numero de la opcion");
+        System.out.println("A continuacion se procedara a registrar a los clientes.");
         System.out.println("1.-Clientes Fresh");
         System.out.println("2.-Clientes Vip");
+        System.out.print("Opcion: ");
         int opcion = entrada.nextInt();
         entrada.nextLine();
         
@@ -30,9 +32,13 @@ public class Nutrifit {
             String correo = entrada.nextLine();
             System.out.print("Direccion:");
             String direccion = entrada.nextLine();
+            System.out.print("Fecha de suscripcion mensual:");
+            String dia= entrada.nextLine();
             Fresh x= new Fresh(cedula, nombre, apellido, telefono, correo, direccion);
             
             suscripciones.add(x);
+            String  cliente= (String)apellido;
+            suscripcionesActivas.add(apellido+","+dia);
             System.out.println("Cliente ingresado de manera exitosa.");
         
         }else if(opcion ==2){
@@ -56,13 +62,90 @@ public class Nutrifit {
             int horasEjercicio = entrada.nextInt();
             System.out.print("Profesion a la que se dedica:");
             String profesion = entrada.nextLine();
-            
+            entrada.nextLine();
+            System.out.print("Fecha de suscripcion mensual:");
+            String dia= entrada.nextLine();
             Vip y= new Vip(cedula, nombre, apellido, telefono, correo, direccion, peso, estatura, horasEjercicio, profesion);
             
             suscripciones.add(y);
+            
+            String  cliente= (String)apellido;
+            suscripcionesActivas.add(apellido+","+dia);
             System.out.println("Cliente ingresado de manera exitosa.");
         }
         
+    }
+    
+    public static void consultarSuscripciones(int fecha){
+        
+        
+        System.out.println("1.-Suscripciones Fresh");
+        System.out.println("2.-Suscripciones Vip");
+        System.out.print("Ingrese la opcion que desee: ");
+        int consulta = entrada.nextInt();
+        
+        if(consulta == 1){
+            for(String i:suscripcionesActivas){
+                String[] datos = i.split(",");
+                String apellido = datos[0];
+                String dia = datos[1];
+                int diaInicio= Integer.parseInt(dia);
+                int diaFin= diaInicio +31;
+                int diferencia=0;
+                if(diaFin >30){
+                    diferencia=diaFin -30;
+                    diaFin=diferencia;
+                    
+                }              
+                
+                for(Cliente j:suscripciones){
+                    String n=j.apellido;
+                    if(apellido.equals(n)){
+                   
+                        if(j instanceof Fresh){
+                            if(diaFin<= fecha){
+                                System.out.println("Cliente "+n+" no tiene una suscripcion activa");
+                            }else{
+                                System.out.println("Cliente "+n+"  tiene una suscripcion activa");
+                            }
+                        }  
+                    }
+                }
+            }
+        
+        }else if(consulta == 2){
+            for(String i:suscripcionesActivas){
+                String[] datos = i.split(",");
+                String apellido = datos[0];
+                String dia = datos[1];
+                int diaInicio= Integer.parseInt(dia);
+                int diaFin= diaInicio +31;
+                int diferencia=0;
+                if(diaFin >30){
+                    diferencia=diaFin -30;
+                    diaFin=diferencia;
+                }              
+                
+                for(Cliente j:suscripciones){
+                    String n=j.apellido;
+                    
+                    if(apellido.equals(n)){
+                   
+                        if(j instanceof Vip){
+                            if(diaFin<= fecha){
+                                System.out.println("Cliente "+n+" no tiene una suscripcion activa");
+                            }else{
+                                System.out.println("Cliente "+n+"  tiene una suscripcion activa");
+                            }      
+                        }  
+                        
+                    
+                    }
+                }
+            }
+        
+        }
+    
     }
     
     

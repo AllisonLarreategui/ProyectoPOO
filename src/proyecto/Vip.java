@@ -32,7 +32,7 @@ public class Vip extends Cliente{
         System.out.println("Su suscripcion mensual es de:  120");
     }
     
-    public double calcularIMC(double estatura, double peso){
+    public static double calcularIMC(double estatura, double peso){
         double IMC = (estatura/(peso*peso));
         return IMC;
     }
