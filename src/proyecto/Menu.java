@@ -2,11 +2,12 @@
 package proyecto;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Menu {
+    static ArrayList<Receta> menu= new ArrayList<>();
     
     public static ArrayList<Receta> generadorMenu(){
-        ArrayList<Receta> Menu= new ArrayList<>();
         
         ArrayList<Receta> desayuno= new ArrayList<>();
         ArrayList<Receta> almuerzo= new ArrayList<>();
@@ -29,14 +30,20 @@ public class Menu {
             int iA = (int) (Math.random()*almuerzo.size());
             int iC = (int) (Math.random()*cena.size());
             
-            Menu.add(desayuno.get(iD));
-            Menu.add(almuerzo.get(iA));
-            Menu.add(cena.get(iC));
+            menu.add(desayuno.get(iD));
+            menu.add(almuerzo.get(iA));
+            menu.add(cena.get(iC));
         }
-        return Menu;
+        return menu;
         
         
     }
     
+    public static void enviarCorreos(ArrayList<Receta> m){
+        for(Receta i:m){
+            Fresh.Buzon1.add(i);
+            Vip.Buzon2.add(i);
+        }
+    }
     
 }

@@ -5,6 +5,8 @@
  */
 package proyecto;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Diana Chica Z
@@ -14,6 +16,7 @@ public class Vip extends Cliente{
     private  int estatura;
     private int horasEjerSema;
     private  String profesion;
+    static ArrayList<Receta> Buzon2= new ArrayList<>();
         
     public Vip(String cedula, String nombre, String apellido, String telefono, String correo, String direccion, double peso, int estatura, int horasEjerSema,String profesion){
         super(cedula,nombre, apellido, telefono, correo, direccion);

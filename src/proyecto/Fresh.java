@@ -5,10 +5,12 @@
  */
 
 package proyecto;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Fresh extends Cliente{
     public static Scanner sc = new Scanner(System.in);
+    static ArrayList<Receta> Buzon1= new ArrayList<>();
     
     public Fresh(String cedula, String nombre, String apellido, String telefono, String correo, String direccion ) {
        super(cedula, nombre, apellido, telefono, correo, direccion);
@@ -29,7 +31,7 @@ public class Fresh extends Cliente{
      *
      */
     @Override
-    //falta completar
+    
     
     public void valorSuscripcion(){
       
@@ -37,4 +39,9 @@ public class Fresh extends Cliente{
       System.out.println("Su suscripcion mensual es de :"+suscripcion);
         
     }
+
+    public static void setBuzon1(ArrayList<Receta> Buzon1) {
+        Fresh.Buzon1 = Buzon1;
+    }
+    
 }

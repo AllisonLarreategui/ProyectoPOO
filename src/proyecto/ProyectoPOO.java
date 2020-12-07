@@ -44,11 +44,15 @@ public class ProyectoPOO {
           
           break;
         case "4":
-            System.out.println(Menu.generadorMenu());
+            ArrayList m=Menu.generadorMenu();
+            System.out.println(m);
             
           break;
         case "5":
-          
+            ArrayList x=Menu.generadorMenu();
+            Menu.enviarCorreos(x);
+            //Imprimo para ver que si se guardo en la lista de emails de Fresh
+            System.out.println(Fresh.Buzon1);
           break;
         case "6":
           
@@ -59,7 +63,7 @@ public class ProyectoPOO {
     
     
     public static void main(String[] args) {
-        
+    
     //OBJETOS DE PRUEBA PARA EL PROGRAMA
     
     Receta receta1 = new Receta("Bolon de Verde","Desayuno", "Bolon de Verde molido,con huevo frito");

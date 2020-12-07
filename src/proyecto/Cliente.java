@@ -1,6 +1,8 @@
 
 package proyecto;
 
+import java.util.ArrayList;
+
 public abstract class Cliente {
      protected  String cedula;
      protected String nombre;
@@ -8,6 +10,7 @@ public abstract class Cliente {
      protected String telefono;
      protected String correo;
      protected String direccion;
+     protected ArrayList<Receta> Buzon= new ArrayList<>();
      
 
     public Cliente(String cedula, String nombre, String apellido, String telefono, String correo, String direccion) {

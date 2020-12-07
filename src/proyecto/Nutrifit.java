@@ -62,7 +62,8 @@ public class Nutrifit {
             suscripciones.add(y);
             System.out.println("Cliente ingresado de manera exitosa.");
         }
-    
-    
+        
     }
+    
+    
 }
