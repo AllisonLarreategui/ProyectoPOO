@@ -65,6 +65,8 @@ public class Receta {
         }
     }
     
+    
+    //  Metodo Validado
     public static void registroRecetas(){
         String c;
         System.out.println("Ingrese el nombre de su receta:");
@@ -90,6 +92,7 @@ public class Receta {
         ingresarProductos();
         
         Receta x= new Receta(n,c, d);
+        Nutrifit.recetario.add(x);
       
     }
     

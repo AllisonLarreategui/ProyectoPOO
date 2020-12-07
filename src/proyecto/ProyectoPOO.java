@@ -50,6 +50,7 @@ public class ProyectoPOO {
             Receta.registroRecetas();
           break;
         case "3":
+            Nutrifit.RegistroClientes();
           
           break;
         case "4":

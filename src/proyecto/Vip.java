@@ -11,11 +11,11 @@ package proyecto;
  */
 public class Vip extends Cliente{
     private  double peso;
-    private  double estatura;
+    private  int estatura;
     private int horasEjerSema;
     private  String profesion;
         
-    public Vip(String cedula, String nombre, String apellido, String telefono, String correo, String direccion, double peso, double estatura, int horasEjerSema,String profesion){
+    public Vip(String cedula, String nombre, String apellido, String telefono, String correo, String direccion, double peso, int estatura, int horasEjerSema,String profesion){
         super(cedula,nombre, apellido, telefono, correo, direccion);
         this.peso = peso;
         this.estatura = estatura;

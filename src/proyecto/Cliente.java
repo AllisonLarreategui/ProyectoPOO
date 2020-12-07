@@ -21,4 +21,6 @@ public abstract class Cliente {
     }
     
     public abstract void valorSuscripcion();
+    
+  
 }
