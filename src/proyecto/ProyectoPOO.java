@@ -50,7 +50,7 @@ public class ProyectoPOO {
       opcion = sc.nextLine();
       switch(opcion){
         case "1":
-          
+            Ingrediente.escrituraArchivos();
           break;
         case "2":
           

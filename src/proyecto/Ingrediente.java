@@ -5,6 +5,7 @@
  */
 package proyecto;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.util.*;
 import java.io.FileNotFoundException;
@@ -32,9 +33,12 @@ public class Ingrediente {
     @Override
     public String toString(){
         return (nombre+"=["+calorias+ ","+hidratos +","+proteinas+","+grasas+","+fibras+"]");
+       
     }
+    static ArrayList<Ingrediente> ingredientes= new ArrayList<>();
+    //Metodo para leer los productos
     public static ArrayList<Ingrediente> leerData(String direccionArchivo){
-        ArrayList<Ingrediente> ingredientes= new ArrayList<>();
+        
         try (BufferedReader r= new BufferedReader(new FileReader(direccionArchivo))){
             String linea=null;
             r.readLine();
@@ -61,4 +65,45 @@ public class Ingrediente {
         }
         return ingredientes;
    }
+    
+    
+   //Metodo para subir nuevos productos
+    public static void escrituraArchivos(){
+        
+        //ENTRADA DE DATOS
+        //declaro variables para la entrada de datos, para poder agregarlos
+        //al arraylist y al documento
+        Scanner entrada = new Scanner(System.in);
+        
+        System.out.println("Ingrese el nombre del producto que desea agregar:");
+        String producto = entrada.nextLine();
+        System.out.println("A continuacion de le pedira la informacion nutricional.");        
+        System.out.println("Ingrese el numero de calorias:");
+        int calorias = entrada.nextInt();
+        System.out.println("Ingrese el numero de hidratos:");
+        int hidratos = entrada.nextInt();
+        System.out.println("Ingrese el numero de proteinas:");
+        int proteinas = entrada.nextInt();
+        System.out.println("Ingrese el numero de grasas:");
+        int grasas = entrada.nextInt();
+        System.out.println("Ingrese el numero de fibras:");
+        int fibras = entrada.nextInt();
+                
+        entrada.nextLine();
+        
+        //agrego al arraylist
+        ingredientes.add(new Ingrediente(producto, calorias, hidratos, proteinas, grasas, fibras));
+        
+        // agregamos al documento, para eso usamos bufferWriter
+        //obligatoriamente con try catch
+        try{
+            try (BufferedWriter w = new BufferedWriter(new FileWriter("src/proyecto/Ingredientes.csv", true))) {
+                w.write("\n"+producto + "," +calorias+","+hidratos+","+proteinas+","+grasas+","+fibras+",");
+            }
+        }
+        catch(IOException e){
+            System.err.println("Escritura de archivos, error :" + e);
+        }
+         
+    }
 }
