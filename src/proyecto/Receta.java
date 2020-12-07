@@ -25,6 +25,11 @@ public class Receta {
         this.descripcion = descripcion;
     }
 
+    public String getClasificacion() {
+        return clasificacion;
+    }
+    
+    
     
     
     //Metodo validado
@@ -95,5 +100,11 @@ public class Receta {
         Nutrifit.recetario.add(x);
       
     }
+
+    @Override
+    public String toString() {
+        return "Receta{" + "nombre=" + nombre + ", clasificacion=" + clasificacion + ", descripcion=" + descripcion + '}';
+    }
+    
     
 }

@@ -6,6 +6,7 @@
 package proyecto;
 
 import java.awt.AWTEventMulticaster;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -43,7 +44,8 @@ public class ProyectoPOO {
           
           break;
         case "4":
-          
+            System.out.println(Menu.generadorMenu());
+            
           break;
         case "5":
           
