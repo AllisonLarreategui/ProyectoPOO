@@ -67,7 +67,7 @@ public class Ingrediente {
    }
     
     
-   //Metodo para subir nuevos productos
+   //Metodo Validado, para subir nuevos productos
     public static void escrituraArchivos(){
         
         //ENTRADA DE DATOS

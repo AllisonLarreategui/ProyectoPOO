@@ -16,15 +16,19 @@ public class Receta {
     
     private String nombre;
     private String clasificacion;
-    public ArrayList<String> productos = new ArrayList<>();
+    private String descripcion;
+    public static ArrayList<String> productos = new ArrayList<>();
 
-    public Receta(String nombre, String clasificacion) {
+    public Receta(String nombre, String clasificacion, String descripcion) {
         this.nombre = nombre;
         this.clasificacion = clasificacion;
+        this.descripcion = descripcion;
     }
+
+    
     
     //Metodo validado
-    public void ingresarProductos(){
+    public static void ingresarProductos(){
         System.out.println("Ingrese el nombre de los productos a continuacion, si desea salir ingresar la palabra(Salir)");
         String variableReceta ="hola";
         
@@ -37,7 +41,7 @@ public class Receta {
     }
     
     //Metodo Validado
-    public boolean ingredientesNecesarios(){
+    public  boolean ingredientesNecesarios(){
         ArrayList hola;
         hola = Ingrediente.leerData("src/proyecto/Ingredientes.csv");
         int contador=0;
@@ -61,5 +65,32 @@ public class Receta {
         }
     }
     
+    public static void registroRecetas(){
+        String c;
+        System.out.println("Ingrese el nombre de su receta:");
+        String n = entrada.nextLine();
+        System.out.println("Su plato se servira en:");
+        System.out.println("1. Desayuno");
+        System.out.println("2. Almuerzo");
+        System.out.println("3. Cena");
+        int cl= entrada.nextInt();
+        entrada.nextLine();
+        
+        if(cl == 1){
+            c="Desayuno";
+        }else if(cl == 2){
+            c="Almuerzo";
+        }else{
+            c="Cena";
+        }
+        
+        System.out.println("Ingrese una breve descripcion:");
+        String d = entrada.nextLine();
+       
+        ingresarProductos();
+        
+        Receta x= new Receta(n,c, d);
+      
+    }
     
 }

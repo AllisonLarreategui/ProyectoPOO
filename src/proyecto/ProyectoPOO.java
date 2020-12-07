@@ -18,17 +18,11 @@ public class ProyectoPOO {
         
       //Objetos necesarios para el programa
       
-      Receta bolon = new Receta("Bolon de verde","Desayuno");
-      Receta sopaVerduras= new Receta("Sopa de Verduras", "Almuerzo");
-      Receta asadoPollo = new Receta("Asado de pollo", "Merienda");
+      
       Fresh cliente2 = new Fresh("sgf", "asfdsf", "asdvfd", "sadfdsf", "sdvfsf","asdfdsf");
       
-      bolon.ingresarProductos();
-      System.out.println(bolon.productos);
-      System.out.println(asadoPollo.productos);
-      
-      System.out.println(bolon.ingredientesNecesarios());
-      cliente2.valorSuscripcion();
+   
+     
       
       menu();
 
@@ -53,7 +47,7 @@ public class ProyectoPOO {
             Ingrediente.escrituraArchivos();
           break;
         case "2":
-          
+            Receta.registroRecetas();
           break;
         case "3":
           
