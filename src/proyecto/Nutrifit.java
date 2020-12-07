@@ -1,8 +1,16 @@
 
 package proyecto;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Nutrifit {
     static ArrayList<Cliente> suscripciones = new ArrayList<>();
@@ -145,6 +153,31 @@ public class Nutrifit {
             }
         
         }
+    
+    }
+    
+    public static void serializar (){
+        try (ObjectOutputStream os = new ObjectOutputStream (new FileOutputStream("src/recursos"))){
+            os.writeObject(recetario);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Nutrifit.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Nutrifit.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    public static void deserializar(){
+        
+        try  (ObjectInputStream is = new ObjectInputStream( new FileInputStream("src/recursos/recetario.dat"))){
+            
+            recetario = (ArrayList<Receta>)is.readObject();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Nutrifit.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(Nutrifit.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
     
     }
     

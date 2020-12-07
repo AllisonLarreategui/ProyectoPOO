@@ -36,7 +36,11 @@ public class Ingrediente {
        
     }
     static ArrayList<Ingrediente> ingredientes= new ArrayList<>();
-    //Metodo para leer los productos
+    /**
+     * 
+     * @param direccionArchivo
+     * @return 
+     */
     public static ArrayList<Ingrediente> leerData(String direccionArchivo){
         
         try (BufferedReader r= new BufferedReader(new FileReader(direccionArchivo))){

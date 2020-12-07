@@ -20,7 +20,7 @@ public class ProyectoPOO {
     public static void menu(){
       String opcion="";  
      
-      while(!opcion.equals("7")){
+      while(!opcion.equals("8")){
           
       System.out.println("***********NutriFit***********\n");
       
@@ -30,8 +30,8 @@ public class ProyectoPOO {
       System.out.println("4.-Creacion automatica del menu semanal");  
       System.out.println("5.-Envió de Menú Semanal a Clientes por correo electrónico");
       System.out.println("6.-Consultar Suscripciones");
-      System.out.println("7.-Salir");
-      
+      System.out.println("7.-Guardar");
+      System.out.println("8.-Salir");
       System.out.print("Opcion:");
       opcion = sc.nextLine();
       switch(opcion){
@@ -40,6 +40,7 @@ public class ProyectoPOO {
           break;
         case "2":
             Receta.registroRecetas();
+            
           break;
         case "3":
             Nutrifit.RegistroClientes();
@@ -63,6 +64,10 @@ public class ProyectoPOO {
           int j=sc.nextInt();
           Nutrifit.consultarSuscripciones(j);
           break;
+        case "7":
+          Nutrifit.serializar();
+          break;
+        
         }
       }
     }

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package proyecto;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ import java.util.Scanner;
  *
  * @author User
  */
-public class Receta {
+public class Receta implements Serializable{
     public static Scanner entrada= new Scanner(System.in);
     
     private String nombre;
