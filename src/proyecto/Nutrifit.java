@@ -33,6 +33,7 @@ public class Nutrifit {
             Fresh x= new Fresh(cedula, nombre, apellido, telefono, correo, direccion);
             
             suscripciones.add(x);
+            System.out.println("Cliente ingresado de manera exitosa.");
         
         }else if(opcion ==2){
             System.out.print("Ingrese el numero de cedula:");
@@ -59,7 +60,7 @@ public class Nutrifit {
             Vip y= new Vip(cedula, nombre, apellido, telefono, correo, direccion, peso, estatura, horasEjercicio, profesion);
             
             suscripciones.add(y);
-        
+            System.out.println("Cliente ingresado de manera exitosa.");
         }
     
     
