@@ -4,7 +4,9 @@ package proyecto;
 import java.util.ArrayList;
 
 public abstract class Cliente {
-     protected  String cedula;
+    
+    //clase padre Cliente objetos protected
+    protected  String cedula;
      protected String nombre;
      protected String apellido;
      protected String telefono;

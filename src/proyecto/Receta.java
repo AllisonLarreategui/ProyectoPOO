@@ -33,47 +33,62 @@ public class Receta implements Serializable{
     
     
     
-    //Metodo validado
+    /**
+     * Este metodo nos  permite ingresar los productos, que seran necesarios para elaborar nuestras recetas
+     * de manera paralela estos productos se agregan al archivo ingredientes.csv
+     * 
+     */
     public static void ingresarProductos(){
-        System.out.println("Ingrese el nombre de los productos a continuacion, si desea salir ingresar la palabra(Salir)");
+        
+        System.out.println("A continuacion ingrese el nombre de los productos, si desea salir ingresar la palabra(Salir)");
         String variableReceta ="hola";
         
         while(!"Salir".equals(variableReceta)){
-            System.out.println("Ingrese un ingrediente");
-            variableReceta= entrada.nextLine();
-            productos.add(variableReceta);
+            
+            
+            variableReceta= Ingrediente.escrituraArchivos();
+            productos.add(variableReceta);   
         }
         
     }
     
-    //Metodo Validado
-    public  boolean ingredientesNecesarios(){
-        ArrayList hola;
-        hola = Ingrediente.leerData("src/proyecto/Ingredientes.csv");
+    /**
+     * En la exposicion dije que no estaba vinculado y que no existia este metodo, la verdad si estaba
+     * se envio en el repositorio y se lo habia probado, fue uno de los primero metodos hechos
+     * y al parecer me puse nerviosa y lo olvide por que no lo añadi al menu de la clase main
+     * este metodo compara la lista productos compuesta del nombre de cada ingrediente, 
+     * con el arreglo de tipo ingrediente.
+     * @return 
+     */
+    public  static void ingredientesNecesarios(){
+        ArrayList<Ingrediente> ejemplo = Ingrediente.ingredientes;
         int contador=0;
         for(String i:productos){
-            for(Object j:hola){
-                Ingrediente l = (Ingrediente) j;
-                if(i.equals(l.nombre)){
-                    contador+=1;
-                    System.out.println("Si hay todos los ingredientes en el almancen");
-                    
+            for(Ingrediente j:ejemplo){
+                if(i.equals(j.nombre)){
+                    contador+=1;                  
                 }
             
             }   
         }
         int total = productos.size();
-        contador+=1;
+        
         if(contador == total){
-            return true;
+            System.out.println("Si hay todos los ingredientes en el almancen");
+            
         }else{
-        return false;
+            System.out.println("Faltan ingredientes para elaborar la receta");
         }
     }
     
     
-    //  Metodo Validado
+    /**
+     * Este metodo nos permite crear objetos de la Clase receta 
+     * para esto creimos que era mejor el ingreso solo del numero de la opcion
+     * en vez de escribir desayuno, almuerzo o cena, para evitar errores.
+     */
     public static void registroRecetas(){
+        
         String c;
         System.out.println("Ingrese el nombre de su receta:");
         String n = entrada.nextLine();
@@ -99,9 +114,13 @@ public class Receta implements Serializable{
         
         Receta x= new Receta(n,c, d);
         Nutrifit.recetario.add(x);
-      
+             
     }
 
+    /**
+     * Sobreescritura del toString para poder ver el menu 
+     * @return 
+     */
     @Override
     public String toString() {
         return "Receta{" + "nombre=" + nombre + ", clasificacion=" + clasificacion + ", descripcion=" + descripcion + '}';

@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Properties;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,6 +20,21 @@ public class Nutrifit {
     public static Scanner entrada= new Scanner(System.in);
     
     
+    /**
+     * El metodo RegistroCliente() es utilizado para crear objetos de la clase cliente
+     * y objetos de la clase Vip, para esto despliega un pequeño menu donde el ususario ingresa las opciones
+     * ya que vip y fresh tiene informacion diferente
+     * los objetos creados tanto vip como fresh se agregan a la lista suscripciones<>()
+     * 
+     * Se hace una pregunta adicional  que pide la fecha de suscripcion
+     * una vez que se crean los objetos, obtenemos el apellido y la fecha de suscricipcion y estos 
+     * se agregan a la lista suscripcionesActivas<>()
+     * 
+     * es decir agregamos los clientes a suscripciones
+     * y agregamos solo el apellido y la fecha a suscripciones activas     * 
+     */
+    
+    
     public static void RegistroClientes(){
         System.out.println("A continuacion se procedara a registrar a los clientes.");
         System.out.println("1.-Clientes Fresh");
@@ -26,6 +42,7 @@ public class Nutrifit {
         System.out.print("Opcion: ");
         int opcion = entrada.nextInt();
         entrada.nextLine();
+        
         
         if(opcion== 1){
             System.out.print("Ingrese el numero de cedula:");
@@ -47,9 +64,10 @@ public class Nutrifit {
             suscripciones.add(x);
             String  cliente= (String)apellido;
             suscripcionesActivas.add(apellido+","+dia);
-            System.out.println("Cliente ingresado de manera exitosa.");
+            System.out.println("Cliente ingresado de manera exitosa. \n");
         
         }else if(opcion ==2){
+            
             System.out.print("Ingrese el numero de cedula:");
             String cedula = entrada.nextLine();
             System.out.print("Nombre:");
@@ -79,22 +97,37 @@ public class Nutrifit {
             
             String  cliente= (String)apellido;
             suscripcionesActivas.add(apellido+","+dia);
-            System.out.println("Cliente ingresado de manera exitosa.");
+            System.out.println("Cliente ingresado de manera exitosa.\n");
         }
         
     }
+    
+    /*
+    Para el metodo consultar Suscripciones tenemos la opcion de consultar todas las suscripciones por tipo
+    es decir Vip y fresh, se despliega un pequeño menu, y se usa if para saber que opcion coge el usuario
+    dentro del id primero recorremos la lista de suscripciones Activas
+    y usamos el split por que el formato es un String "Apellido,fecha", convertimos el string de fecha a entero
+    creamos la variale diaFin que sera la fecha en que termina la suscripcion, si  dia fin es mayor a 30
+    hacemos una resta para contar como el siguiente mes
+    
+    luego recorremos la lista suscripciones que es de tipo cliente, y usamos Instance of para separar si es
+    un objeto de tipo cliente o vip, para finalizar usamos la variable dia fin  para comparar con la variable 
+    dia inicio para saber si la suscripcion esta activa o vencida.
+    
+    Al usar el metodo el menu se imprime dos veces
+    
+    */
     
     public static void consultarSuscripciones(int fecha){
         
-        
+         int consulta;
         System.out.println("1.-Suscripciones Fresh");
         System.out.println("2.-Suscripciones Vip");
         System.out.print("Ingrese la opcion que desee: ");
-        int consulta = entrada.nextInt();
+        consulta = entrada.nextInt();
         
-        if(consulta == 1){
-            for(String i:suscripcionesActivas){
-                String[] datos = i.split(",");
+        for(String i:suscripcionesActivas){
+            String[] datos = i.split(",");
                 String apellido = datos[0];
                 String dia = datos[1];
                 int diaInicio= Integer.parseInt(dia);
@@ -110,51 +143,40 @@ public class Nutrifit {
                     String n=j.apellido;
                     if(apellido.equals(n)){
                    
-                        if(j instanceof Fresh){
-                            if(diaFin<= fecha){
-                                System.out.println("Cliente "+n+" no tiene una suscripcion activa");
-                            }else{
-                                System.out.println("Cliente "+n+"  tiene una suscripcion activa");
-                            }
-                        }  
+                        if(consulta == 1){
+                            
+                            if(j instanceof Fresh){
+                                if(diaFin<= fecha){
+                                    System.out.println("Cliente "+n+" no tiene una suscripcion activa\n");
+                                    System.out.println("_______________________________________________");
+                                }else{
+                                    System.out.println("Cliente "+n+"  tiene una suscripcion activa\n");
+                                    System.out.println("_______________________________________________");
+                                }
+                            } 
+                            
+                        }else if(consulta == 2){
+                            if(j instanceof Vip){
+                                if(diaFin<= fecha){
+                                    System.out.println("Cliente "+n+" no tiene una suscripcion activa\n");
+                                    System.out.println("_______________________________________________");
+                                }else{
+                                    System.out.println("Cliente "+n+"  tiene una suscripcion activa\n");
+                                    System.out.println("_______________________________________________");
+                                }      
+                            }                     
+                        }
                     }
                 }
-            }
-        
-        }else if(consulta == 2){
-            for(String i:suscripcionesActivas){
-                String[] datos = i.split(",");
-                String apellido = datos[0];
-                String dia = datos[1];
-                int diaInicio= Integer.parseInt(dia);
-                int diaFin= diaInicio +31;
-                int diferencia=0;
-                if(diaFin >30){
-                    diferencia=diaFin -30;
-                    diaFin=diferencia;
-                }              
-                
-                for(Cliente j:suscripciones){
-                    String n=j.apellido;
-                    
-                    if(apellido.equals(n)){
-                   
-                        if(j instanceof Vip){
-                            if(diaFin<= fecha){
-                                System.out.println("Cliente "+n+" no tiene una suscripcion activa");
-                            }else{
-                                System.out.println("Cliente "+n+"  tiene una suscripcion activa");
-                            }      
-                        }  
-                        
-                    
-                    }
-                }
-            }
-        
         }
     
     }
+    
+    /*
+    Este metodo guarda las recetas ingresados por medio dela serializacion
+    para usarla decidimos agregar una opcion mas al menu
+    */
+    
     
     public static void serializar (){
         try (ObjectOutputStream os = new ObjectOutputStream (new FileOutputStream("src/recursos"))){
@@ -166,20 +188,5 @@ public class Nutrifit {
         }
         
     }
-    
-    public static void deserializar(){
-        
-        try  (ObjectInputStream is = new ObjectInputStream( new FileInputStream("src/recursos/recetario.dat"))){
-            
-            recetario = (ArrayList<Receta>)is.readObject();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Nutrifit.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException | ClassNotFoundException ex) {
-            Logger.getLogger(Nutrifit.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
-    
-    }
-    
-    
+       
 }

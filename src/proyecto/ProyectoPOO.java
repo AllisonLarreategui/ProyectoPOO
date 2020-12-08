@@ -36,15 +36,17 @@ public class ProyectoPOO {
       opcion = sc.nextLine();
       switch(opcion){
         case "1":
-            Ingrediente.escrituraArchivos();
+            Receta.ingresarProductos();
+            
           break;
         case "2":
             Receta.registroRecetas();
+            Receta.ingredientesNecesarios();
             
           break;
+
         case "3":
             Nutrifit.RegistroClientes();
-          
           break;
         case "4":
             ArrayList m=Menu.generadorMenu();
@@ -56,18 +58,24 @@ public class ProyectoPOO {
             System.out.println("El menu se generara hasta el dia viernes " + d );
             ArrayList x=Menu.generadorMenu();
             Menu.enviarCorreos(x);
+            
             //Imprimo para ver que si se guardo en la lista de emails de Fresh
             System.out.println(Fresh.Buzon1);
           break;
+
         case "6":
-          System.out.print("Ingrese la fecha del dia de hoy: ");
-          int j=sc.nextInt();
-          Nutrifit.consultarSuscripciones(j);
+            
+            //se imprime dos veces el menu al consultar debido al nextInt
+            
+            System.out.print("Ingrese la fecha del dia de hoy: ");
+            int j;
+            j = sc.nextInt();
+            Nutrifit.consultarSuscripciones(j);
           break;
         case "7":
           Nutrifit.serializar();
           break;
-        
+          
         }
       }
     }
