@@ -36,9 +36,17 @@ public class Ingrediente {
        
     }
     static ArrayList<Ingrediente> ingredientes= new ArrayList<>();
+        
     /**
      * 
      * @param direccionArchivo
+     * 
+     * el metodo leer data nos pide la direccion de archivo, lee linea por linea
+     * usamos un split para separar a partir de las comaen una lista
+     * y cada puesto de la lista se le asigna una variable.
+     * Si bien este metodo nos pide la direccion del archivo
+     * no lo llamamos en el main, lo usamos directamente en la clase menu para
+     * el metodo ingresar producto. 
      * @return 
      */
     public static ArrayList<Ingrediente> leerData(String direccionArchivo){
@@ -71,26 +79,28 @@ public class Ingrediente {
    }
     
     
-   //Metodo Validado, para subir nuevos productos
-    public static void escrituraArchivos(){
+   /**
+    * Este metodo nos premite agregar productos al archivo ingredientes.csv, primero pedios la entreda de datos
+    luego lo agregamos al arryalist  ingrediente
+    e ingresamos los parametros al archivo, con el mismo formato para que no cause error la proxima vez que
+    necesitemos leer el archivo
+    */
+    public static String escrituraArchivos(){
         
-        //ENTRADA DE DATOS
-        //declaro variables para la entrada de datos, para poder agregarlos
-        //al arraylist y al documento
+        
         Scanner entrada = new Scanner(System.in);
         
-        System.out.println("Ingrese el nombre del producto que desea agregar:");
-        String producto = entrada.nextLine();
-        System.out.println("A continuacion de le pedira la informacion nutricional.");        
-        System.out.println("Ingrese el numero de calorias:");
+        System.out.print("Nombre:");
+        String producto = entrada.nextLine();   
+        System.out.print("Ingrese el numero de calorias:");
         int calorias = entrada.nextInt();
-        System.out.println("Ingrese el numero de hidratos:");
+        System.out.print("Ingrese el numero de hidratos:");
         int hidratos = entrada.nextInt();
-        System.out.println("Ingrese el numero de proteinas:");
+        System.out.print("Ingrese el numero de proteinas:");
         int proteinas = entrada.nextInt();
-        System.out.println("Ingrese el numero de grasas:");
+        System.out.print("Ingrese el numero de grasas:");
         int grasas = entrada.nextInt();
-        System.out.println("Ingrese el numero de fibras:");
+        System.out.print("Ingrese el numero de fibras:");
         int fibras = entrada.nextInt();
                 
         entrada.nextLine();
@@ -102,12 +112,12 @@ public class Ingrediente {
         //obligatoriamente con try catch
         try{
             try (BufferedWriter w = new BufferedWriter(new FileWriter("src/proyecto/Ingredientes.csv", true))) {
-                w.write("\n"+producto + "," +calorias+","+hidratos+","+proteinas+","+grasas+","+fibras+",");
+                w.write(producto + "," +calorias+","+hidratos+","+proteinas+","+grasas+","+fibras+",");
             }
         }
         catch(IOException e){
             System.err.println("Escritura de archivos, error :" + e);
         }
-         
+    return  producto;     
     }
 }
