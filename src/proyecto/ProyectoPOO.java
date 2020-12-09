@@ -60,9 +60,12 @@ public class ProyectoPOO {
             System.out.println(Fresh.Buzon1);
           break;
         case "6":
-          System.out.print("Ingrese la fecha del dia de hoy: ");
+          System.out.println("Ingrese el dia(numero) de hoy: ");
           int j=sc.nextInt();
-          Nutrifit.consultarSuscripciones(j);
+          System.out.println("Ingrese el mes de hoy( Ejemplo: diciembre):  ");
+          sc.nextLine();
+          String k=sc.nextLine();
+          Nutrifit.consultarSuscripciones(j, k);
           break;
         case "7":
           Nutrifit.serializar();

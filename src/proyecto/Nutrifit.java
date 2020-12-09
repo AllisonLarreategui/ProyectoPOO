@@ -12,6 +12,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 public class Nutrifit {
     static ArrayList<Cliente> suscripciones = new ArrayList<>();
     static ArrayList<String> suscripcionesActivas =new ArrayList<>(); 
@@ -40,13 +41,15 @@ public class Nutrifit {
             String correo = entrada.nextLine();
             System.out.print("Direccion:");
             String direccion = entrada.nextLine();
-            System.out.print("Fecha de suscripcion mensual:");
+            System.out.print("Fecha de suscripcion (dia numero):");
             String dia= entrada.nextLine();
+            System.out.print("Fecha de suscripcion (mes Ejemplo: diciembre():");
+            String mes= entrada.nextLine();
             Fresh x= new Fresh(cedula, nombre, apellido, telefono, correo, direccion);
             
             suscripciones.add(x);
             String  cliente= (String)apellido;
-            suscripcionesActivas.add(apellido+","+dia);
+            suscripcionesActivas.add(apellido+","+dia +","+mes);
             System.out.println("Cliente ingresado de manera exitosa.");
         
         }else if(opcion ==2){
@@ -71,20 +74,23 @@ public class Nutrifit {
             System.out.print("Profesion a la que se dedica:");
             String profesion = entrada.nextLine();
             entrada.nextLine();
-            System.out.print("Fecha de suscripcion mensual:");
+            System.out.print("Fecha de suscripcion mensual(dia numero):");
             String dia= entrada.nextLine();
+            System.out.println("Fecha de suscripcion mensual(mes Ejemplo: diciembre):");
+            String mes= entrada.nextLine();
             Vip y= new Vip(cedula, nombre, apellido, telefono, correo, direccion, peso, estatura, horasEjercicio, profesion);
             
             suscripciones.add(y);
             
             String  cliente= (String)apellido;
-            suscripcionesActivas.add(apellido+","+dia);
+            suscripcionesActivas.add(apellido+","+dia+","+mes);
             System.out.println("Cliente ingresado de manera exitosa.");
         }
         
     }
+    //*
     
-    public static void consultarSuscripciones(int fecha){
+    public static void consultarSuscripciones(int dia, String mes){
         
         
         System.out.println("1.-Suscripciones Fresh");
@@ -96,8 +102,10 @@ public class Nutrifit {
             for(String i:suscripcionesActivas){
                 String[] datos = i.split(",");
                 String apellido = datos[0];
-                String dia = datos[1];
-                int diaInicio= Integer.parseInt(dia);
+                String dias = datos[1];
+                String mess=datos[2];
+                int diaInicio= Integer.parseInt(dias);
+                //int mesInicio= Integer.parseInt(mess);
                 int diaFin= diaInicio +31;
                 int diferencia=0;
                 if(diaFin >30){
@@ -111,10 +119,10 @@ public class Nutrifit {
                     if(apellido.equals(n)){
                    
                         if(j instanceof Fresh){
-                            if(diaFin<= fecha){
-                                System.out.println("Cliente "+n+" no tiene una suscripcion activa");
+                            if(diaFin>= dia && (mes.equals(mess))){
+                                System.out.println("Cliente "+n+" tiene una suscripcion activa");
                             }else{
-                                System.out.println("Cliente "+n+"  tiene una suscripcion activa");
+                                System.out.println("Cliente "+n+" no tiene una suscripcion activa");
                             }
                         }  
                     }
@@ -125,8 +133,10 @@ public class Nutrifit {
             for(String i:suscripcionesActivas){
                 String[] datos = i.split(",");
                 String apellido = datos[0];
-                String dia = datos[1];
-                int diaInicio= Integer.parseInt(dia);
+                String dias = datos[1];
+                String mess=datos[2];
+                int diaInicio= Integer.parseInt(dias);
+                //int mesInicio= Integer.parseInt(mess);
                 int diaFin= diaInicio +31;
                 int diferencia=0;
                 if(diaFin >30){
@@ -140,7 +150,7 @@ public class Nutrifit {
                     if(apellido.equals(n)){
                    
                         if(j instanceof Vip){
-                            if(diaFin<= fecha){
+                            if(diaFin>= dia && (mes.equals(mess))){
                                 System.out.println("Cliente "+n+" no tiene una suscripcion activa");
                             }else{
                                 System.out.println("Cliente "+n+"  tiene una suscripcion activa");
