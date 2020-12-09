@@ -64,22 +64,16 @@ public class ProyectoPOO {
           break;
 
         case "6":
-<<<<<<< HEAD
+
           System.out.println("Ingrese el dia(numero) de hoy: ");
           int j=sc.nextInt();
           System.out.println("Ingrese el mes de hoy( Ejemplo: diciembre):  ");
           sc.nextLine();
           String k=sc.nextLine();
           Nutrifit.consultarSuscripciones(j, k);
-=======
             
             //se imprime dos veces el menu al consultar debido al nextInt
             
-            System.out.print("Ingrese la fecha del dia de hoy: ");
-            int j;
-            j = sc.nextInt();
-            Nutrifit.consultarSuscripciones(j);
->>>>>>> 6e6acf68c59c5c1caa1e978c88d268b8935b9ac9
           break;
         case "7":
           Nutrifit.serializar();
