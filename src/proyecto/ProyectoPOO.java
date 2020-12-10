@@ -65,9 +65,9 @@ public class ProyectoPOO {
 
         case "6":
 
-          System.out.println("Ingrese el dia(numero) de hoy: ");
+          System.out.print("Ingrese el dia(numero) de hoy: ");
           int j=sc.nextInt();
-          System.out.println("Ingrese el mes de hoy( Ejemplo: diciembre):  ");
+          System.out.print("Ingrese el mes de hoy( Ejemplo: diciembre): ");
           sc.nextLine();
           String k=sc.nextLine();
           Nutrifit.consultarSuscripciones(j, k);

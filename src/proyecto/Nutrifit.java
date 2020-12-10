@@ -137,7 +137,6 @@ public class Nutrifit {
         System.out.println("2.-Suscripciones Vip");
         System.out.print("Ingrese la opcion que desee: ");
         consulta = entrada.nextInt();
-        
         for(String i:suscripcionesActivas){
             String[] datos = i.split(",");
                 String apellido = datos[0];
@@ -149,7 +148,7 @@ public class Nutrifit {
                 int diferencia=0;
                 if(diaFin >30){
                     diferencia=diaFin -30;
-                    diaFin=diferencia;
+                    diaFin-=diferencia;
                     
                 }              
                 
@@ -162,7 +161,11 @@ public class Nutrifit {
                                 if(diaFin>= dia && (mes.equals(mess))){
                                     System.out.println("Cliente "+n+"  tiene una suscripcion activa\n");
                                     System.out.println("_______________________________________________");
-                                }else{
+                                }
+                                
+                                
+                                
+                                else{
                                     System.out.println("Cliente "+n+" no tiene una suscripcion activa\n");
                                     System.out.println("_______________________________________________");
                                 }
@@ -170,11 +173,11 @@ public class Nutrifit {
                             
                         }else if(consulta == 2){
                             if(j instanceof Vip){
-                                if(diaFin>= dia && (mes.equals(mess))){
-                                    System.out.println("Cliente "+n+" no tiene una suscripcion activa\n");
+                                if(diaFin>= dia && ((mes.equals(mess)))){
+                                    System.out.println("Cliente "+n+" tiene una suscripcion activa\n");
                                     System.out.println("_______________________________________________");
                                 }else{
-                                    System.out.println("Cliente "+n+"  tiene una suscripcion activa\n");
+                                    System.out.println("Cliente "+n+" no tiene una suscripcion activa\n");
                                     System.out.println("_______________________________________________");
                                 }      
                             }                     
